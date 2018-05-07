@@ -1,0 +1,8 @@
+# Activar RewriteEngine
+RewriteEngine on
+ 
+# Reescribir la URL solicitada por el usuario
+#   Entrada:  clientes/NOMBRE/
+#   Salida: clientes.php?id=NOMBRE
+RewriteRule ^edicion/(\w+)/?$ edicion.php?id=$1
+RewriteRule ^buscar/(\w+)/?$ buscar.php?nro=$1
