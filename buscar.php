@@ -37,9 +37,9 @@ $cobrarRyl = 0;
     <h2>Buscar una lista</h2>
 </header>
 <div class="container">
-    <form class="form-inline">
+    <form class="form-inline" id="form">
             <input type="search" id="casilla" name="casilla" placeholder="Ingresar nro de lista" class="form-control" />
-            <input type="button" id="boton_busqueda" name="boton_busqueda" value="Buscar" class="btn btn-primary" />
+            <input type="submit" id="boton_busqueda" name="boton_busqueda" value="Buscar" class="btn btn-primary" />
         </form>
         <br>
         <a href="../index.php" class="btn btn-default">Volver</a>
@@ -91,5 +91,27 @@ $cobrarRyl = 0;
 
      </div>
      </div>
+     <script>
+       const form = document.getElementById('form')
+       form.addEventListener('submit', evt => {
+             evt.preventDefault()
+             var nro = $('#casilla').val();
+             var dato = '';
+             dato = "opcion=listar&nro="+nro;
+             var pathname = window.location.host;
+             //console.log(pathname)
+             $("#resultado").html('<p><img src="http://'+window.location.host+'/img/ajax.gif" /></p>');
+                $.ajax({
+                        type:'POST',
+                        data: dato,
+                        url: 'http://'+window.location.host+'/ajax/buscar.php',
+                        success: res => {
+                          $("#resultado").html(res)
+                        }
+                    });
+
+         })
+     </script>
+
 </body>
 </html>

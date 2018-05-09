@@ -1,6 +1,6 @@
 <?php
-require_once'config.php';
-$mysqli = new mysqli('localhost', 'root','ws7', 'ravioles');
+require_once 'config.php';
+$mysqli = new mysqli(HOST, USER, PASS, DBNAME);
 $sql = "SELECT * FROM ravioles WHERE fecha_evento = '" . FECHA . "' AND nro_lista = 'S'";
 $result = $mysqli->query($sql);
 $row = $result->fetch_object();

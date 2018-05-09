@@ -3,7 +3,6 @@ $(document).ready(carga);
 
 function carga() {
     $("#search").keyup(consultar);
-    $("#boton_busqueda").click(buscaLista);
     $(":input:first").focus();
     $("#resultado").on("click", ".entregado", function(){
 	var nombre = ($(this).attr('id'))
