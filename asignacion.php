@@ -1,6 +1,6 @@
 <?php
     require_once'config.php';
-    $mysqli = new mysqli('localhost', 'root','ws7', 'ravioles');
+    $mysqli = new mysqli(HOST, USER,PASS, DBNAME);
     $sql = "INSERT INTO ravioles (nombre, verdura, jyq, pollo, ryl, pago, entregado, fecha_evento, nro_lista) VALUES(";
     $pago = 0;
     if(isset($_POST['pago'])) {

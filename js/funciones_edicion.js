@@ -25,9 +25,10 @@ function carga() {
         var id = nombre.split("_")
         id= id[1];
         var check = $(this).prop('checked')
-
-        $.post('../ajax/listas.php','id='+id+'&op=pago&chk='+check,
-            function(respuesta){
+        const divCalculadora = document.getElementById('calculadora')
+        let calculo = (check)?'&calculadora='+divCalculadora.value:''
+        $.post('../ajax/listas.php','id='+id+'&op=pago&chk='+check+calculo,
+          function(respuesta){
               var pc = $('#por-cobrar')
               let valor = pc.html()
               if(check) {
@@ -35,6 +36,7 @@ function carga() {
               } else {
                 valor = parseInt(valor) + parseInt(respuesta.importe * respuesta.precio)
               }
+                divCalculadora.value = respuesta.calculadora
               console.log(respuesta)
                 pc.html(valor)
             },'json');
@@ -113,7 +115,7 @@ function escribe(respuesta) {
 function buscaLista() {
 
     var nro = $('#casilla').val();
-    console.log(nro);
+
     var dato = '';
     var path ='http://'+window.location.host+'/ajax/buscar.php'
     dato = "opcion=listar&nro="+nro;

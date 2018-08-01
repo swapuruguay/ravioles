@@ -24,11 +24,12 @@ switch($opcion) {
         $cobrarPollo = 0;
         $ryl = 0;
         $cobrarRyl = 0;
-
+        
 
         while($fila = mysqli_fetch_object($result)) {
             echo "<tr>";
-            echo "<td><a href='".BASE_URL."edicion/".$fila->id_ingreso."'>".$fila->nombre. "</a></td><td>" . $fila->verdura . "</td><td>" . $fila->jyq . "</td>" .
+            echo "<td><a href='".BASE_URL."edicion/".$fila->id_ingreso."'>".
+                  $fila->nombre. "</a></td><td>" . $fila->verdura . "</td><td>" . $fila->jyq . "</td>" .
                     "<td>".$fila->pollo."</td><td>".$fila->ryl."</td><td>".(($fila->verdura+$fila->jyq+$fila->pollo+$fila->ryl)*VALOR/100) ."</td><td><input class='pagado' id='pag_$fila->id_ingreso' type='checkbox'".(($fila->pago==1)?"checked":"")."></td>".
                     "<td><input class='entregado' id='ent_$fila->id_ingreso' type='checkbox'".(($fila->entregado==1)?"checked":"")."></td>";
             echo "</tr>";
@@ -43,6 +44,7 @@ switch($opcion) {
         }
         echo "<tr><td>Totales:</td><td>".$verdura."</td><td>".$jyq."</td>".
                 "<td>".$pollo."</td><td>".$ryl."</td><td><td></td></td></tr>";
+
         $total = $verdura+$jyq+$pollo+$ryl;
         $cobrar = $cobrarJyq + $cobrarPollo + $cobrarRyl + $cobrarVerdura;
         echo "</table>";
