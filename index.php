@@ -137,6 +137,12 @@ and open the template in the editor.
               type:'POST',
               success: (res) => {
                 document.getElementById('resultado').innerHTML = res
+                form1.nombre.value = ''
+                form1.verdura.value = ''
+                form1.jyq.value = ''
+                form1.pollo.value = ''
+                form1.ryl.value = ''
+                form1.nombre.focus()
               }
             })
           })
