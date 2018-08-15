@@ -26,22 +26,27 @@
   while($fila = $result->fetch_object()){
     $dataPoint[0] = array(
         'label' => 'verdura',
+        'indexLabel' => 'Verdura',
         'y' => (int) $fila->verdura
     );
     $dataPoint[1] = array(
         'label' => 'jyq',
+        'indexLabel' => 'Jamon y queso',
         'y' => (int) $fila->jyq
     );
     $dataPoint[2] = array(
       'label' => 'pollo',
+      'indexLabel' => 'Pollo',
       'y' => (int) $fila->pollo
     );
     $dataPoint[3] = array(
       'label' => 'ryl',
+      'indexLabel' => 'Ricota y Lomito',
       'y' => (int) $fila->ryl
     );
     $retorno[] = array(
       'type' => "pie",
+      'legendText' => "{indexLabel}",
       'name' => $meses[$fila->fecha-1],
       'showInLegend' => true,
       'toolTipContent' => "{y} - #percent %",
